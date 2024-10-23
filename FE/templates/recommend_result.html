@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관광지 추천 결과 | TOUR</title>
+  <link rel="stylesheet" href="../resources/css/setting.css">
+  <link rel="stylesheet" href="../resources/css/plugin.css">
+  <link rel="stylesheet" href="../resources/css/template.css">
+  <link rel="stylesheet" href="../resources/css/common.css">
+  <link rel="stylesheet" href="../resources/css/style.css">
+
+  <style>
+    /* Flexbox를 사용한 비율 조정 및 레이아웃 개선 */
+    .tour-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px; /* 간격 추가 */
+      border-bottom: 1px solid lightgray;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .tour-item {
+      width: calc(33.333% - 20px); /* 3등분 하여 고정 너비 지정 */
+      box-sizing: border-box;
+    }
+
+    .cardset-figure {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .cardset-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .cardset-body {
+      padding: 10px;
+      text-align: center;
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    h2.cardset-subtit {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    p.cardset-desc {
+      font-size: 1rem;
+      margin: 10px 0;
+    }
+
+    /* Mobile (responsive) adjustments */
+    @media (max-width: 768px) {
+      .tour-item {
+        width: 100%; /* 모바일에서는 아이템을 한 줄로 표시 */
+      }
+
+      .cardset-img {
+        height: 200px; /* 모바일에서도 적절한 이미지 크기 지정 */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- [S] Header -->
+  <header class="campland-N1" data-bid="jyM0XM29Mx">
+    <div class="header-inner">
+      <div class="header-container container-lg">
+        <div class="header-left">
+          <h1 class="header-title"></h1><a href="/"><img src="/resources/img/80953516b4be4fcca4ad2d562886e6d4.png" alt="로고" style="height: 73px; width: 180px;"></a>
+        </div>
+        <div class="header-center">
+
+          <ul class="header-gnblist">
+            <li class="header-gnbitem"><a class="header-gnblink" href="/recommend" style="width: 400px;"><span style="font-size: 22px;">관광지 추천</span></a></li>
+            <li class="header-gnbitem"></li>
+            <li class="header-gnbitem">
+
+            </li>
+            <li class="header-gnbitem"><a class="header-gnblink" href="/board" style="position: relative; width: 400px;"><span style="font-size: 22px;">게시판</span></a></li>
+            <li class="header-gnbitem"></li>
+            <li class="header-gnbitem">
+
+            </li>
+          </ul>
+        </div>
+        <div class="header-right">
+          <div class="header-utils">
+            <a href="/mypage" class="btn-profile header-utils-btn"><img src="../resources/icons/ico_profile_black.svg" alt="검색"></a><button class="btn-momenu header-utils-btn"><img src="../resources/icons/ico_menu_black.svg" alt="모바일메뉴"></button><button class="btn-moclose header-utils-btn"><img src="../resources/icons/ico_close_m_black.svg" alt="닫기"></button></div>
+        </div>
+      </div>
+      <div class="header-fullmenu fullmenu-top">
+        <div class="fullmenu-wrapper">
+          <div class="fullmenu-head">
+            <h4 class="fullmenu-title"><a href="javascript:void(0)"><img src="../resources/img/img_logo_white.png" alt="로고"></a></h4>
+            <ul class="fullmenu-member">
+              <li><a href="javascript:void(0)">로그인</a></li>
+              <li><a href="javascript:void(0)">회원가입</a></li>
+            </ul>
+          </div>
+
+          
+        </div><button class="fullmenu-close"><img src="../resources/icons/ico_close_m_white.svg" alt="닫기"></button>
+      </div>
+    </div>
+  </header>
+  <!-- [E] Header -->
+
+  <!-- [S] Main Contents -->
+  <main class="th-layout-main">
+    <section class="campland-N15">
+      <div class="contents-inner">
+        <div class="contents-container container-md">
+          <div class="textset textset-sub">
+            <h2 class="textset-tit" style="text-align: center;">추천 여행지</h2>
+            <p class="textset-desc" style="text-align: center;">입력해주신 사진을 바탕으로 K-OUR에서 추천해드리는 한국 여행지 테마 입니다.</p>
+          </div>
+          
+          <div class="cardset-wrap">
+            <a href="javascript:void(0);" class="cardset">
+              <figure class="cardset-figure">
+                {% if top_3_themes[0] == '동굴' %}
+                    <img class="cardset-img" src="../resources/img/동굴.jpg" alt="동굴 이미지">
+                {% elif top_3_themes[0] == '정원' %}
+                    <img class="cardset-img" src="../resources/img/정원.jpg" alt="꽃 이미지">
+                {% elif top_3_themes[0] == '시장' %}
+                    <img class="cardset-img" src="../resources/img/시장.jpg" alt="시장 이미지">
+                {% elif top_3_themes[0] == '산' %}
+                    <img class="cardset-img" src="../resources/img/산.jpg" alt="산 이미지">
+                {% elif top_3_themes[0] == '박물관' %}
+                    <img class="cardset-img" src="../resources/img/박물관.jpg" alt="박물관 이미지">
+                {% elif top_3_themes[0] == '야경' %}
+                    <img class="cardset-img" src="../resources/img/야경.jpg" alt="야경 이미지">
+                {% elif top_3_themes[0] == '바다' %}
+                    <img class="cardset-img" src="../resources/img/바다.jpg" alt="바다 이미지">
+                {% elif top_3_themes[0] == '궁/사찰' %}
+                    <img class="cardset-img" src="../resources/img/궁사찰.jpg" alt="궁/사찰 이미지">
+                {% elif top_3_themes[0] == '테마파크' %}
+                    <img class="cardset-img" src="../resources/img/테마파크.jpg" alt="테마파크 이미지">
+                {% endif %}
+            </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-subtit">추천 테마: {{ top_3_themes[0] }}<br>{{ top_3_probs[0] }}</h2>
+                <p class="cardset-desc">{{ tourex[0] }}</p>
+              </div>
+            </a>
+
+            <a href="javascript:void(0);" class="cardset">
+              <figure class="cardset-figure">
+                {% if top_3_themes[1] == '동굴' %}
+                    <img class="cardset-img" src="../resources/img/동굴.jpg" alt="동굴 이미지">
+                {% elif top_3_themes[1] == '정원' %}
+                    <img class="cardset-img" src="../resources/img/정원.jpg" alt="꽃 이미지">
+                {% elif top_3_themes[1] == '시장' %}
+                    <img class="cardset-img" src="../resources/img/시장.jpg" alt="시장 이미지">
+                {% elif top_3_themes[1] == '산' %}
+                    <img class="cardset-img" src="../resources/img/산.jpg" alt="산 이미지">
+                {% elif top_3_themes[1] == '박물관' %}
+                    <img class="cardset-img" src="../resources/img/박물관.jpg" alt="박물관 이미지">
+                {% elif top_3_themes[1] == '야경' %}
+                    <img class="cardset-img" src="../resources/img/야경.jpg" alt="야경 이미지">
+                {% elif top_3_themes[1] == '바다' %}
+                    <img class="cardset-img" src="../resources/img/바다.jpg" alt="바다 이미지">
+                {% elif top_3_themes[1] == '궁/사찰' %}
+                    <img class="cardset-img" src="../resources/img/궁사찰.jpg" alt="궁/사찰 이미지">
+                {% elif top_3_themes[1] == '테마파크' %}
+                    <img class="cardset-img" src="../resources/img/테마파크.jpg" alt="테마파크 이미지">
+                {% endif %}
+            </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-subtit">추천 테마: {{ top_3_themes[1] }}<br>{{ top_3_probs[1] }}</h2>
+                <p class="cardset-desc">{{ tourex[1] }}</p>
+              </div>
+            </a>
+
+            <a href="javascript:void(0);" class="cardset">
+              <figure class="cardset-figure">
+                {% if top_3_themes[2] == '동굴' %}
+                    <img class="cardset-img" src="../resources/img/동굴.jpg" alt="동굴 이미지">
+                {% elif top_3_themes[2] == '정원' %}
+                    <img class="cardset-img" src="../resources/img/정원.jpg" alt="꽃 이미지">
+                {% elif top_3_themes[2] == '시장' %}
+                    <img class="cardset-img" src="../resources/img/시장.jpg" alt="시장 이미지">
+                {% elif top_3_themes[2] == '산' %}
+                    <img class="cardset-img" src="../resources/img/산.jpg" alt="산 이미지">
+                {% elif top_3_themes[2] == '박물관' %}
+                    <img class="cardset-img" src="../resources/img/박물관.jpg" alt="박물관 이미지">
+                {% elif top_3_themes[2] == '야경' %}
+                    <img class="cardset-img" src="../resources/img/야경.jpg" alt="야경 이미지">
+                {% elif top_3_themes[2] == '바다' %}
+                    <img class="cardset-img" src="../resources/img/바다.jpg" alt="바다 이미지">
+                {% elif top_3_themes[2] == '궁/사찰' %}
+                    <img class="cardset-img" src="../resources/img/궁사찰.jpg" alt="궁/사찰 이미지">
+                {% elif top_3_themes[2] == '테마파크' %}
+                    <img class="cardset-img" src="../resources/img/테마파크.jpg" alt="테마파크 이미지">
+                {% endif %}
+            </figure>
+              <div class="cardset-body">
+                <h2 class="cardset-subtit">추천 테마: {{ top_3_themes[2] }}<br>{{ top_3_probs[2] }}</h2>
+                <p class="cardset-desc">{{ tourex[2] }}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="campland-N19">
+      <div class="contents-inner">
+        <div class="contents-container container-md">
+          <div class="textset textset-sub">
+            <h2 class="textset-tit" style="text-align: center;">이런 곳도 있어요!</h2>
+          </div>
+
+          <!-- 첫 번째 층 -->
+          <h3>{{ top_3_themes[0] }}</h3>
+          <div class="tour-container">
+            <div class="tour-item">
+              <a href="javascript:void(0);" class="cardset">
+                <figure class="cardset-figure">
+                  <img class="cardset-img" src="{{ tourimg[0][0] }}" alt="카드 이미지">
+                </figure>
+                <div class="cardset-body">
+                  <h2 class="cardset-tit">{{ tourtitle[0][0] }}</h2>
+                  <p class="cardset-desc">{{ touraddr[0][0] }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="tour-item">
+              <a href="javascript:void(0);" class="cardset">
+                <figure class="cardset-figure">
+                  <img class="cardset-img" src="{{ tourimg[0][1] }}" alt="카드 이미지">
+                </figure>
+                <div class="cardset-body">
+                  <h2 class="cardset-tit">{{ tourtitle[0][1] }}</h2>
+                  <p class="cardset-desc">{{ touraddr[0][1] }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="tour-item">
+              <a href="javascript:void(0);" class="cardset">
+                <figure class="cardset-figure">
+                  <img class="cardset-img" src="{{ tourimg[0][2] }}" alt="카드 이미지">
+                </figure>
+                <div class="cardset-body">
+                  <h2 class="cardset-tit">{{ tourtitle[0][2] }}</h2>
+                  <p class="cardset-desc">{{ touraddr[0][2] }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- 두 번째 층 -->
+          <h3>{{ top_3_themes[1] }}</h3>
+          <div class="tour-container">
+            <div class="tour-item">
+              <a href="javascript:void(0);" class="cardset">
+                <figure class="cardset-figure">
+                  <img class="cardset-img" src="{{ tourimg[1][0] }}" alt="카드 이미지">
+                </figure>
+                <div class="cardset-body">
+                  <h2 class="cardset-tit">{{ tourtitle[1][0] }}</h2>
+                  <p class="cardset-desc">{{ touraddr[1][0] }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="tour-item">
+              <a href="javascript:void(0);" class="cardset">
+                <figure class="cardset-figure">
+                  <img class="cardset-img" src="{{ tourimg[1][1] }}" alt="카드 이미지">
+                </figure>
+                <div class="cardset-body">
+                  <h2 class="cardset-tit">{{ tourtitle[1][1] }}</h2>
+                  <p class="cardset-desc">{{ touraddr[1][1] }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="tour-item">
+              <a href="javascript:void(0);" class="cardset">
+                <figure class="cardset-figure">
+                  <img class="cardset-img" src="{{ tourimg[1][2] }}" alt="카드 이미지">
+                </figure>
+                <div class="cardset-body">
+                  <h2 class="cardset-tit">{{ tourtitle[1][2] }}</h2>
+                  <p class="cardset-desc">{{ touraddr[1][2] }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- 세 번째 층 -->
+          <h3>{{ top_3_themes[2] }}</h3>
+          <div class="tour-container">
+            <div class="tour-item">
+              <a href="javascript:void(0);" class="cardset">
+                <figure class="cardset-figure">
+                  <img class="cardset-img" src="{{ tourimg[2][0] }}" alt="카드 이미지">
+                </figure>
+                <div class="cardset-body">
+                  <h2 class="cardset-tit">{{ tourtitle[2][0] }}</h2>
+                  <p class="cardset-desc">{{ touraddr[2][0] }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="tour-item">
+              <a href="javascript:void(0);" class="cardset">
+                <figure class="cardset-figure">
+                  <img class="cardset-img" src="{{ tourimg[2][1] }}" alt="카드 이미지">
+                </figure>
+                <div class="cardset-body">
+                  <h2 class="cardset-tit">{{ tourtitle[2][1] }}</h2>
+                  <p class="cardset-desc">{{ touraddr[2][1] }}</p>
+                </div>
+              </a>
+            </div>
+            <div class="tour-item">
+              <a href="javascript:void(0);" class="cardset">
+                <figure class="cardset-figure">
+                  <img class="cardset-img" src="{{ tourimg[2][2] }}" alt="카드 이미지">
+                </figure>
+                <div class="cardset-body">
+                  <h2 class="cardset-tit">{{ tourtitle[2][2] }}</h2>
+                  <p class="cardset-desc">{{ touraddr[2][2] }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="campland-N2" data-bid="NsM0vvgpPE">
+    <div id="google_translate_element" style="text-align: center; margin-top: 10px;"></div>
+  
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'ko',  // 기본 언어는 한국어
+          includedLanguages: 'ko,en,ja,zh-CN',  // 한국어, 영어, 일본어, 중국어 추가
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,  // 간단한 레이아웃
+          autoDisplay: false  // 자동 표시 비활성화
+        }, 'google_translate_element');
+      }
+    </script>
+    <div class="footer-container container-lg">
+      <div class="footer-container container-lg">
+        <div class="footer-top">
+          <h1 class="footer-logo"><a href="javascript:void(0)" style="background-position: 50% 50%; background-image: url(../resources/img/footerlogo.png); background-size: cover;"></a></h1>
+          <ul class="footer-snslist">
+            <li class="footer-snsitem"><a class="footer-snslink" href="javascript:void(0)"><img src="../resources/icons/ico_instagram_lightgrey.svg" alt="인스타그램"></a></li>
+            <li class="footer-snsitem"></li>
+            <li class="footer-snsitem"><a class="footer-snslink" href="javascript:void(0)"><img src="../resources/icons/ico_facebook_lightgrey.svg" alt="페이스북"></a></li>
+            <li class="footer-snsitem"></li>
+          </ul>
+        </div>
+        <div class="footer-bottom">
+          <h2 class="footer-logo"><a href="javascript:void(0)"><img src="../resources/img/img_logo_white.png" alt="로고"></a></h2>
+          <div class="footer-txt">
+            <p>주소 서울 특별시 강동구 천호대로 157-14 나비빌딩 6F</p>
+            <p><span>T. 02-479-0654</span><span>E. Jognag523@naver.com</span></p>
+          </div>
+          <div class="footer-txt">
+            <p>2024 BY &nbsp;ⓒ낙지탕탕이. ALL RIGHTS RESEVED</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <br/>
+    </div>
+    
+  </footer>
+  <script>
+    // Google 번역기를 초기화하는 함수
+  function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ko',  // 기본 언어는 한국어
+    includedLanguages: 'ko,en,ja,zh-CN',  // 한국어, 영어, 일본어, 중국어 추가
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,  // 간단한 레이아웃
+    autoDisplay: false  // 자동 표시 비활성화
+  }, 'google_translate_element');
+  }
+  
+  // 페이지가 로드될 때 번역기 초기화
+  document.addEventListener('DOMContentLoaded', function() {
+  googleTranslateElementInit();
+  });
+  
+  // 라우터 이동 시 번역기 다시 초기화
+  window.addEventListener('popstate', function() {
+  googleTranslateElementInit();
+  });
+  
+  </script>
+
+  <script src="../resources/js/setting.js"></script>
+  <script src="../resources/js/plugin.js"></script>
+  <script src="../resources/js/template.js"></script>
+  <script src="../resources/js/common.js"></script>
+</body>
+
+</html>

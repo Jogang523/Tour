@@ -1,0 +1,45 @@
+.tableset {
+    width: 100%;
+    border-top: 2px solid #000;
+}
+.tableset table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.tableset th, .tableset td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+.tableset th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+.tableset-fract th:first-child,
+.tableset-fract td:first-child {
+    width: 10%;
+}
+.tableset-fract th:nth-child(2),
+.tableset-fract td:nth-child(2) {
+    width: 60%;
+}
+.tableset-fract th:last-child,
+.tableset-fract td:last-child {
+    width: 30%;
+}
+.btnset {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btnset-round {
+    border-radius: 5px;
+}
+.btnset-black {
+    background-color: #000;
+    color: #fff;
+}

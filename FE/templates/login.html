@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="title" content="웹사이트">
+  <meta name="description" content="웹사이트입니다.">
+  <meta name="keywords" content="키워드,키워드,키워드">
+  <meta property="og:title" content="웹사이트">
+  <meta property="og:description" content="웹사이트입니다">
+  <meta property="og:image" content="https://웹사이트/images/opengraph.png">
+  <meta property="og:url" content="https://웹사이트">
+  <title>로그인 | TOUR</title>
+  <link rel="stylesheet" href="../resources/css/setting.css">
+  <link rel="stylesheet" href="../resources/css/plugin.css">
+  <link rel="stylesheet" href="../resources/css/template.css">
+  <link rel="stylesheet" href="../resources/css/common.css">
+  <link rel="stylesheet" href="../resources/css/style.css">
+</head>
+
+<body>
+  <!-- [S]campland-N1 -->
+  <header class="campland-N1" data-bid="xgm0UMCj2D">
+    <div class="header-inner">
+      <div class="header-container container-lg">
+        <div class="header-left">
+          <h1 class="header-title"></h1><a href="/"><img src="../resources/img/80953516b4be4fcca4ad2d562886e6d4.png" alt="로고" style="height: 73px; width: 180px;"></a>
+        </div>
+        <div class="header-center">
+          <ul class="header-gnblist">
+            <li class="header-gnbitem"><a class="header-gnblink" href="/recommend" style="width: 400px;"><span style="font-size: 22px;">관광지 추천</span></a></li>
+            <li class="header-gnbitem"></li>
+            <li class="header-gnbitem"><a class="header-gnblink" href="/board" style="position: relative; width: 400px;"><span style="font-size: 22px;">게시판</span></a></li>
+            <li class="header-gnbitem"></li>
+            <li class="header-gnbitem">
+            </li>
+          </ul>
+        </div>
+        <div class="header-right">
+          <div class="header-utils"><a href="/mypage" class="btn-profile header-utils-btn"><img src="../resources/icons/ico_profile_black.svg" alt="검색"></a><button class="btn-momenu header-utils-btn"><img src="../resources/icons/ico_menu_black.svg" alt="모바일메뉴"></button><button class="btn-moclose header-utils-btn"><img src="../resources/icons/ico_close_m_black.svg" alt="닫기"></button></div>
+        <!-- 경로 수정 ################################################################################################ login-->
+        </div>
+      </div>
+      <div class="header-fullmenu fullmenu-top">
+        <div class="fullmenu-wrapper">
+          <div class="fullmenu-head">
+            <h4 class="fullmenu-title"><a href="javascript:void(0)"><img src="../resources/img/img_logo_white.png" alt="로고"></a></h4>
+            <ul class="fullmenu-member">
+              <li><a href="javascript:void(0)">로그인</a></li>
+              <li><a href="javascript:void(0)">회원가입</a></li>
+            </ul>
+          </div>
+          <ul class="fullmenu-gnblist">
+            <li class="fullmenu-gnbitem"><a class="fullmenu-gnblink" href="javascript:void(0)"><span>캠프랜드</span></a></li>
+            <li class="fullmenu-gnbitem"><a class="fullmenu-gnblink" href="javascript:void(0)"><span>시설소개</span></a></li>
+            <li class="fullmenu-gnbitem"><a class="fullmenu-gnblink" href="javascript:void(0)"><span>공지사항</span></a>
+              <ul class="fullmenu-sublist">
+                <li class="fullmenu-subitem"><a class="fullmenu-sublink" href="javascript:void(0)"><span>공지사항</span></a></li>
+                <li class="fullmenu-subitem"><a class="fullmenu-sublink" href="javascript:void(0)"><span>자주묻는질문</span></a></li>
+              </ul>
+            </li>
+            <li class="fullmenu-gnbitem"><a class="fullmenu-gnblink" href="javascript:void(0)"><span>이용후기</span></a></li>
+            <li class="fullmenu-gnbitem"><a class="fullmenu-gnblink" href="javascript:void(0)"><span>오시는 길</span></a></li>
+            <li class="fullmenu-gnbitem"><a class="fullmenu-gnblink" href="javascript:void(0)"><span>예약하기</span></a>
+              <ul class="fullmenu-sublist">
+                <li class="fullmenu-subitem"><a class="fullmenu-sublink" href="javascript:void(0)"><span>빠른예약</span></a></li>
+                <li class="fullmenu-subitem"><a class="fullmenu-sublink" href="javascript:void(0)"><span>예약조회</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><button class="fullmenu-close"><img src="../resources/icons/ico_close_m_white.svg" alt="닫기"></button>
+      </div>
+    </div>
+  </header>
+  <!-- [E]campland-N1 -->
+  
+  <main class="th-layout-main">
+    <!-- [S]campland-N24 -->
+    <div class="campland-N24" data-bid="vAm0uMcJ6w" id="">
+      <div class="contents-inner">
+        <div class="contents-container">
+          <div class="contents-top">
+            <div class="textset textset-center">
+              <h2 class="textset-tit">일반 로그인</h2>
+            </div>
+            <!-- 로그인 폼 추가 -->
+            <form id="login-form" onsubmit="submitLoginForm(event)">
+              <div class="inputset inputset-round">
+                <input type="text" class="inputset-input form-control" aria-label="아이디" name="username" placeholder="아이디를 입력해주세요." required>
+              </div>
+              <div class="inputset inputset-round">
+                <input type="password" class="inputset-input form-control" aria-label="비밀번호" name="password" placeholder="비밀번호를 입력해주세요." required>
+              </div>
+              <div class="checkset">
+                <input id="checkset-a-1-1" class="checkset-input input-fill input-round" type="checkbox" value="">
+                <label class="checkset-label" for="checkset-a-1-1"></label>
+                <span class="checkset-text">아이디 저장</span>
+              </div>
+              <button type="submit" class="btnset btnset-round">로그인</button> <!-- 로그인 버튼을 폼 제출로 변경 -->
+            </form>
+            <ul class="contents-list">
+              <li class="contents-item"></li><a href="/signup">회원가입</a>
+              <li class="contents-item"></li>
+              <li class="contents-item">
+                <!-- ID/PASSWORD 찾기 링크 추가 -->
+                <a href="https://example.com/find-id-password" class="p3">ID/PASSWORD 찾기</a>
+              </li>
+            </ul>
+          </div>
+          <div class="contents-bottom">
+            <div class="textset textset-center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [E]campland-N24 -->
+  </main>
+
+  <!-- [S]campland-N2 -->
+  <footer class="campland-N2" data-bid="NsM0vvgpPE">
+    <div id="google_translate_element" style="text-align: center; margin-top: 10px;"></div>
+  
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'ko',  // 기본 언어는 한국어
+          includedLanguages: 'ko,en,ja,zh-CN',  // 한국어, 영어, 일본어, 중국어 추가
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,  // 간단한 레이아웃
+          autoDisplay: false  // 자동 표시 비활성화
+        }, 'google_translate_element');
+      }
+    </script>
+    <div class="footer-container container-lg">
+      <div class="footer-container container-lg">
+        <div class="footer-top">
+          <h1 class="footer-logo"><a href="javascript:void(0)" style="background-position: 50% 50%; background-image: url(../resources/img/footerlogo.png); background-size: cover;"></a></h1>
+          <ul class="footer-snslist">
+            <li class="footer-snsitem"><a class="footer-snslink" href="javascript:void(0)"><img src="../resources/icons/ico_instagram_lightgrey.svg" alt="인스타그램"></a></li>
+            <li class="footer-snsitem"></li>
+            <li class="footer-snsitem"><a class="footer-snslink" href="javascript:void(0)"><img src="../resources/icons/ico_facebook_lightgrey.svg" alt="페이스북"></a></li>
+            <li class="footer-snsitem"></li>
+          </ul>
+        </div>
+        <div class="footer-bottom">
+          <h2 class="footer-logo"><a href="javascript:void(0)"><img src="../resources/img/img_logo_white.png" alt="로고"></a></h2>
+          <div class="footer-txt">
+            <p>주소 서울 특별시 강동구 천호대로 157-14 나비빌딩 6F</p>
+            <p><span>T. 02-479-0654</span><span>E. Jognag523@naver.com</span></p>
+          </div>
+          <div class="footer-txt">
+            <p>2024 BY &nbsp;ⓒ낙지탕탕이. ALL RIGHTS RESEVED</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <br/>
+    </div>
+    
+  </footer>
+  <script>
+    // Google 번역기를 초기화하는 함수
+  function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ko',  // 기본 언어는 한국어
+    includedLanguages: 'ko,en,ja,zh-CN',  // 한국어, 영어, 일본어, 중국어 추가
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,  // 간단한 레이아웃
+    autoDisplay: false  // 자동 표시 비활성화
+  }, 'google_translate_element');
+  }
+  
+  // 페이지가 로드될 때 번역기 초기화
+  document.addEventListener('DOMContentLoaded', function() {
+  googleTranslateElementInit();
+  });
+  
+  // 라우터 이동 시 번역기 다시 초기화
+  window.addEventListener('popstate', function() {
+  googleTranslateElementInit();
+  });
+  
+  </script>
+  <!-- [E]campland-N2 -->
+
+  <!-- 추가된 로그인 처리 스크립트 -->
+  <script src="/resources/js/setting.js"></script>
+  <script src="/resources/js/plugin.js"></script>
+  <script src="/resources/js/template.js"></script>
+  <script src="/resources/js/common.js"></script>
+  <script src="/resources/js/script.js"></script>
+  <script src="/resources/js/login.js"></script>
+
+  <!-- 스크립트 추가 ########################################################################-->
+</body>
+
+</html>

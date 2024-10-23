@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="title" content="웹사이트">
+  <meta name="description" content="웹사이트입니다.">
+  <meta name="keywords" content="키워드,키워드,키워드">
+  <meta property="og:title" content="웹사이트">
+  <meta property="og:description" content="웹사이트입니다">
+  <meta property="og:image" content="https://웹사이트/images/opengraph.png">
+  <meta property="og:url" content="https://웹사이트">
+  <title>{{ post.title }}</title>
+  <link rel="stylesheet" href="../resources/css/setting.css">
+  <link rel="stylesheet" href="../resources/css/plugin.css">
+  <link rel="stylesheet" href="../resources/css/template.css">
+  <link rel="stylesheet" href="../resources/css/common.css">
+  <link rel="stylesheet" href="../resources/css/style.css">
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #F96C21;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      animation-name: modalopen;
+      animation-duration: 0.4s;
+    }
+    
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    @keyframes modalopen {
+      from {opacity: 0}
+      to {opacity: 1}
+    }
+    
+    #passwordInput {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    
+    #confirmDelete {
+      background-color: #F96C21;
+      color: white;
+      padding: 10px 15px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 45%;
+      border-radius: 10px;
+    }
+    
+    #cancelDelete {
+      background-color: #f1f1f1;
+      color: black;
+      padding: 10px 15px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 45%;
+      border-radius: 10px;
+    }
+    
+    #confirmDelete:hover, #cancelDelete:hover {
+      opacity: 0.8;
+    }
+    .campland-N2 {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="campland-N1" data-bid="Fim0xYPY2w">
+    <div class="header-container container-lg">
+      <div class="header-left">
+        <h1 class="header-title"></h1>
+        <a href="/"><img src="../resources/img/80953516b4be4fcca4ad2d562886e6d4.png" alt="로고" style="height: 73px; width: 180px;"></a>
+      </div>
+      <div class="header-center">
+        <ul class="header-gnblist">
+          <li class="header-gnbitem">
+            <a class="header-gnblink" href="/recommend" style="width: 400px;">
+              <span style="font-size: 22px;">관광지 추천</span>
+            </a>
+          </li>
+          <li class="header-gnbitem">
+            <a class="header-gnblink" href="/board" style="position: relative; width: 400px;">
+              <span style="font-size: 22px;">게시판</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-right">
+      </div>
+    </div>
+  </div>
+
+  <!-- 본문 -->
+  <main class="th-layout-main" role="main">
+    <section class="campland-N13" id="uJM0VvgPmy">
+        <div class="contents-inner">
+            <div class="contents-container container-md">
+                <div class="textset textset-sub">
+                    <h2 class="textset-tit">{{ post.title }}</h2>
+                    <p>작성자: {{ author.username }} | 작성일: {{ post.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+                </div>
+                {% if can_edit %}
+                <div style="text-align: right; margin-bottom: 10px;">
+                  <button id="deletePost" style="background: none; border: none; text-decoration: underline; ">삭제하기</button>
+                </div>
+                {% endif %}
+                <div class="contents-body">
+                    {% if post.image_url %}
+                    <div class="post-image">
+                        <img src="{{ post.image_url }}" alt="게시글 이미지" style="max-width: 100%; height: auto;">
+                    </div>
+                    {% endif %}
+                    <div class="post-content">
+                        {{ post.content | safe }}
+                    </div>
+                </div>
+                <div class="contents-link">
+                    <a href="/board" class="btnset btnset-round btnset-line btnset-black">목록으로</a>
+                    {% if can_edit %}
+                    <a href="/boardupdate/{{ post.id }}" class="btnset btnset-round btnset-line btnset-black">수정하기</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <div id="passwordModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>비밀번호 확인</h2>
+        <p>게시글을 삭제하려면 비밀번호를 입력하세요:</p>
+        <input type="password" id="passwordInput">
+        <button id="confirmDelete">확인</button>
+        <button id="cancelDelete">취소</button>
+    </div>
+  </div>
+  
+  <!-- [S]campland-N2 -->
+  <footer class="campland-N2" data-bid="NsM0vvgpPE">
+    <div id="google_translate_element" style="text-align: center; margin-top: 10px;"></div>
+  
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'ko',  // 기본 언어는 한국어
+          includedLanguages: 'ko,en,ja,zh-CN',  // 한국어, 영어, 일본어, 중국어 추가
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,  // 간단한 레이아웃
+          autoDisplay: false  // 자동 표시 비활성화
+        }, 'google_translate_element');
+      }
+    </script>
+    <div class="footer-container container-lg">
+      <div class="footer-container container-lg">
+        <div class="footer-top">
+          <h1 class="footer-logo"><a href="javascript:void(0)" style="background-position: 50% 50%; background-image: url(../resources/img/footerlogo.png); background-size: cover;"></a></h1>
+          <ul class="footer-snslist">
+            <li class="footer-snsitem"><a class="footer-snslink" href="javascript:void(0)"><img src="../resources/icons/ico_instagram_lightgrey.svg" alt="인스타그램"></a></li>
+            <li class="footer-snsitem"></li>
+            <li class="footer-snsitem"><a class="footer-snslink" href="javascript:void(0)"><img src="../resources/icons/ico_facebook_lightgrey.svg" alt="페이스북"></a></li>
+            <li class="footer-snsitem"></li>
+          </ul>
+        </div>
+        <div class="footer-bottom">
+          <h2 class="footer-logo"><a href="javascript:void(0)"><img src="../resources/img/img_logo_white.png" alt="로고"></a></h2>
+          <div class="footer-txt">
+            <p>주소 서울 특별시 강동구 천호대로 157-14 나비빌딩 6F</p>
+            <p><span>T. 02-479-0654</span><span>E. Jognag523@naver.com</span></p>
+          </div>
+          <div class="footer-txt">
+            <p>2024 BY &nbsp;ⓒ낙지탕탕이. ALL RIGHTS RESEVED</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <br/>
+    </div>
+    
+  </footer>
+  <script>
+    // Google 번역기를 초기화하는 함수
+  function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ko',  // 기본 언어는 한국어
+    includedLanguages: 'ko,en,ja,zh-CN',  // 한국어, 영어, 일본어, 중국어 추가
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,  // 간단한 레이아웃
+    autoDisplay: false  // 자동 표시 비활성화
+  }, 'google_translate_element');
+  }
+  
+  // 페이지가 로드될 때 번역기 초기화
+  document.addEventListener('DOMContentLoaded', function() {
+  googleTranslateElementInit();
+  });
+  
+  // 라우터 이동 시 번역기 다시 초기화
+  window.addEventListener('popstate', function() {
+  googleTranslateElementInit();
+  });
+  
+  </script>
+  <!-- [E]campland-N2 -->
+  <script src="../resources/js/setting.js"></script>
+  <script src="../resources/js/plugin.js"></script>
+  <script src="../resources/js/template.js"></script>
+  <script src="../resources/js/common.js"></script>
+  <script src="../resources/js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const deleteButton = document.getElementById('deletePost');
+      const modal = document.getElementById('passwordModal');
+      const passwordInput = document.getElementById('passwordInput');
+      const confirmButton = document.getElementById('confirmDelete');
+      const cancelButton = document.getElementById('cancelDelete');
+      const closeButton = document.getElementsByClassName('close')[0];
+    
+      if (deleteButton) {
+        deleteButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          modal.style.display = "block";
+        });
+      }
+    
+      cancelButton.addEventListener('click', function() {
+        modal.style.display = "none";
+        passwordInput.value = '';
+      });
+    
+      closeButton.addEventListener('click', function() {
+        modal.style.display = "none";
+        passwordInput.value = '';
+      });
+    
+      confirmButton.addEventListener('click', function() {
+        const password = passwordInput.value;
+        if (password) {
+          fetch('/verify-password', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              post_id: '{{ post.id }}',
+              password: password
+            }),
+            credentials: 'include'  // 세션 쿠키를 포함하여 요청
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              return fetch('/delete-post/{{ post.id }}', {
+                method: 'POST',
+                credentials: 'include'  // 세션 쿠키를 포함하여 요청
+              });
+            } else {
+              alert('비밀번호가 일치하지 않습니다.');
+              throw new Error('Password incorrect');
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              alert('게시글이 삭제되었습니다.');
+              window.location.href = '/board';
+            } else {
+              alert('게시글 삭제에 실패했습니다.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          })
+          .finally(() => {
+            modal.style.display = "none";
+            passwordInput.value = '';
+          });
+        }
+      });
+    
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          passwordInput.value = '';
+        }
+      }
+    });
+    </script>
+</body>
+</html>
